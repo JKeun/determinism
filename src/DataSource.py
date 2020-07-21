@@ -61,17 +61,18 @@ class DataSource:
                 ('cat', cat_transform, categorical_ix)
             ])
 
-            if self.problem == "Regression" or "Binary":
-                self.transform_y = ColumnTransformer(transformers=[
-                    ('num', Normalizer(), y.columns)
-                ])
-            else:
+            self.trans_X_train = self.transform_x.fit_transform(X)
+            
+            if self.problem == "Classification":
                 self.transform_y = ColumnTransformer(transformers=[
                     ('cat', cat_transform, y.columns)
                 ])
-
-            self.trans_X_train = self.transform_x.fit_transform(X)
-            self.trans_y_train = self.transform_y.fit_transform(y)
+                self.trans_y_train = self.transform_y.fit_transform(y)
+            else:
+                self.trans_y_train = y
         else:
             self.trans_X_val = self.transform_x.transform(X)
-            self.trans_y_val = self.transform_y.transform(y)
+            if self.problem == "Classification":
+                self.trans_y_val = self.transform_y.transform(y)
+            else:
+                self.trans_y_val = y
