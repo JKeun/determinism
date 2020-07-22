@@ -32,9 +32,10 @@ class MLP:
             # input layer
             model = keras.Sequential()
             model.add(keras.layers.Dense(16, input_shape=(self.X.shape[1],)))
-
+            
             # hidden layer block
             for _ in range(structure_param['hidden_layers']):
+                tf.random.set_seed(42)
                 model.add(keras.layers.Dense(structure_param['units'], activation='relu'))
 
             # output layer
