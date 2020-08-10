@@ -82,7 +82,7 @@ def auto_fit(problem, X_train, y_train, X_val, y_val,
              callbacks=None, shuffle=True,
              steps_per_epoch=None,
              use_all=False):
-    
+
     if use_all:
         hidden_layers = [1, 2, 3]
         units = [16, 32, 64, 128, 256]
