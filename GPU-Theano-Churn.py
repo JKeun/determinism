@@ -1,10 +1,10 @@
 from src.DataSource import DataSource
 from src.MLP import get_single_mlp, compile_model, train_model, auto_fit, select_best_model
 
-filename = "./data/titanic_train.csv"
+filename = "./data/Churn_Modelling.csv"
 ds = DataSource(filename)
-ds.data_load_split(target=['Survived'],
-                   ignore=['Name', 'Cabin', 'Ticket'])
+ds.data_load_split(target=['Exited'],
+                   ignore=['RowNumber', 'CustomerId', 'Surname'])
 ds.define_problem()
 ds.train_val_split(ratio=0.2, random_state=42)
 

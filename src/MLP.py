@@ -1,8 +1,11 @@
+import os
 import itertools
 import numpy as np
 import pandas as pd
 import tensorflow as tf
 from tensorflow import keras
+
+os.environ['TF_DETERMINISTIC_OPS'] = '1'
 
 
 def get_single_mlp(X, y, problem, hidden_layer=1, unit=16):

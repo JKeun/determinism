@@ -8,7 +8,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import Normalizer, OneHotEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
-
+np.random.seed(42)
 
 class DataSource:
     
